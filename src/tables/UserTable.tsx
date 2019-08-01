@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 
 const UserTable: React.FC<{
   users: User[];
+  editRow: (user: User) => void;
   deleteUser: (id: number) => void;
-}> = ({users, deleteUser}): JSX.Element => (
+}> = ({users, editRow, deleteUser}): JSX.Element => (
   <table>
     <thead>
       <tr>
@@ -21,7 +22,8 @@ const UserTable: React.FC<{
             <td>{user.name}</td>
             <td>{user.username}</td>
             <td>
-              <button className="button muted-button">Edit</button>
+              <button onClick={(): void => editRow(user)}
+                className="button muted-button">Edit</button>
               <button onClick={(): void => deleteUser(user.id)}
                 className="button muted-button">Delete</button>
             </td>
@@ -38,6 +40,7 @@ const UserTable: React.FC<{
 
 UserTable.propTypes = {
   users: PropTypes.array.isRequired,
+  editRow: PropTypes.func.isRequired,
   deleteUser: PropTypes.func.isRequired
 };
 
