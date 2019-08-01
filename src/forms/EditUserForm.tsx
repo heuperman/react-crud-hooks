@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, useState, useEffect} from 'react';
 import {User} from '../user';
 import PropTypes from 'prop-types';
 
@@ -14,6 +14,10 @@ const EditUserForm: React.FC<{
     const {name, value} = event.target;
     setUser({...user, [name]: value});
   };
+
+  useEffect((): void => {
+    setUser(currentUser);
+  }, [currentUser]);
 
   return (
     <form
