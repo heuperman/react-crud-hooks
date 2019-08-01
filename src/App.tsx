@@ -17,6 +17,10 @@ const App: React.FC = (): JSX.Element => {
     setUsers([...users, user]);
   };
 
+  const deleteUser = (id: number): void => {
+    setUsers(users.filter((user: User): boolean => user.id !== id));
+  };
+
   return (
     <div className="container">
       <h1>React CRUD app with Hooks and TypeScript</h1>
@@ -27,7 +31,7 @@ const App: React.FC = (): JSX.Element => {
         </div>
         <div className="flex-large">
           <h2>View users</h2>
-          <UserTable users={users}/>
+          <UserTable users={users} deleteUser={deleteUser}/>
         </div>
       </div>
     </div>
