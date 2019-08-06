@@ -1,13 +1,9 @@
 import React, {ChangeEvent, useState, useEffect,} from 'react';
-import {User,} from '../user';
 import PropTypes from 'prop-types';
+import {EditUserFormProps,} from './edit-user-form-props';
 
-const EditUserForm: React.FC<{
-    currentUser: User;
-    updateUser: (id: number, updatedUser: User) => void;
-    setEditing: (state: boolean) => void;
-}> = ({currentUser, updateUser, setEditing,}): JSX.Element => {
-    const [user, setUser,] = useState(currentUser);
+const EditUserForm: React.FC<EditUserFormProps> = (props): JSX.Element => {
+    const [user, setUser,] = useState(props.currentUser);
     const handleInputChange = (
         event: ChangeEvent<{name: string; value: string}>
     ): void => {
@@ -16,11 +12,14 @@ const EditUserForm: React.FC<{
     };
 
     useEffect((): void => {
-        setUser(currentUser);
-    }, [currentUser,]);
+        setUser(props.currentUser);
+    }, [props.currentUser,]);
 
     return (
-        <form onSubmit={(event): void => {event.preventDefault(); updateUser(user.id, user);}}>
+        <form onSubmit={(event): void => {
+            event.preventDefault();
+            props.updateUser(user.id, user);
+        }}>
             <label>Name</label>
             <input type="text" name="name"
                 value={user.name}
@@ -30,7 +29,7 @@ const EditUserForm: React.FC<{
                 value={user.username}
                 onChange={handleInputChange}/>
             <button>Update user</button>
-            <button onClick={(): void => setEditing(false)}
+            <button onClick={(): void => props.setEditing(false)}
                 className="button muted-button">
               Cancel
             </button>

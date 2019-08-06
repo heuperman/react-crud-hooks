@@ -1,10 +1,8 @@
 import React, {ChangeEvent, FormEvent, useState,} from 'react';
 import PropTypes from 'prop-types';
-import {User,} from '../user';
+import {AddUserFormProps,} from './add-user-form-props';
 
-
-const AddUserForm: React.FC<{addUser: (user: User) => void}> = (
-    {addUser,}): JSX.Element => {
+const AddUserForm: React.FC<AddUserFormProps> = (props): JSX.Element => {
 
     const initialFormState = {id: 0, name: '', username: '',};
     const [user, setUser,] = useState(initialFormState);
@@ -19,7 +17,7 @@ const AddUserForm: React.FC<{addUser: (user: User) => void}> = (
         <form onSubmit={(event: FormEvent): void => {
             event.preventDefault();
             if (!user.name || !user.username) return;
-            addUser(user);
+            props.addUser(user);
             setUser(initialFormState);
         }}>
             <label>Name</label>
