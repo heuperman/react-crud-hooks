@@ -21,10 +21,10 @@ module.exports = {
     },
     'plugins': ['@typescript-eslint', 'react'],
     'rules': {
-        'comma-dangle': 'error',
+        'comma-dangle': ['error', 'always'],
         'indent': 'off',
-        '@typescript-eslint/indent': ['error', 2],
-        'max-len': 'error',
+        '@typescript-eslint/indent': ['error', 4],
+        'max-len': ['error', {'code': 100}],
         'semi': 'error',
         'quotes': ['error', 'single']
     },
