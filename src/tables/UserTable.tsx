@@ -1,12 +1,8 @@
 import React from 'react';
-import {User} from '../user';
 import PropTypes from 'prop-types';
+import {UserTableProps} from './user-table-props';
 
-const UserTable: React.FC<{
-    users: User[];
-    editRow: (user: User) => void;
-    deleteUser: (id: number) => void;
-}> = ({users, editRow, deleteUser}): JSX.Element => (
+const UserTable: React.FC<UserTableProps> = (props): JSX.Element => (
     <table>
         <thead>
             <tr>
@@ -16,15 +12,15 @@ const UserTable: React.FC<{
             </tr>
         </thead>
         <tbody>
-            {users.length > 0 ? (
-                users.map((user): JSX.Element => (
+            {props.users.length > 0 ? (
+                props.users.map((user): JSX.Element => (
                     <tr key={user.id}>
                         <td>{user.name}</td>
                         <td>{user.username}</td>
                         <td>
-                            <button onClick={(): void => editRow(user)}
+                            <button onClick={(): void => props.editRow(user)}
                                 className="button muted-button">Edit</button>
-                            <button onClick={(): void => deleteUser(user.id)}
+                            <button onClick={(): void => props.deleteUser(user.id)}
                                 className="button muted-button">Delete</button>
                         </td>
                     </tr>
