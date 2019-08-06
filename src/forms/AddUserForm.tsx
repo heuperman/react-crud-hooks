@@ -1,16 +1,16 @@
-import React, {ChangeEvent, FormEvent, useState,} from 'react';
+import React, {ChangeEvent, FormEvent, useState} from 'react';
 import PropTypes from 'prop-types';
-import {AddUserFormProps,} from './add-user-form-props';
+import {AddUserFormProps} from './add-user-form-props';
 
 const AddUserForm: React.FC<AddUserFormProps> = (props): JSX.Element => {
 
-    const initialFormState = {id: 0, name: '', username: '',};
-    const [user, setUser,] = useState(initialFormState);
+    const initialFormState = {id: 0, name: '', username: ''};
+    const [user, setUser] = useState(initialFormState);
 
     const handleInputChange =
       (event: ChangeEvent<{name: string; value: string}>): void => {
-          const {name, value,} = event.target;
-          setUser({...user, [name]: value,});
+          const {name, value} = event.target;
+          setUser({...user, [name]: value});
       };
 
     return (

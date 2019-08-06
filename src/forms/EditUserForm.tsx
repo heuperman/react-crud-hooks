@@ -1,19 +1,19 @@
-import React, {ChangeEvent, useState, useEffect,} from 'react';
+import React, {ChangeEvent, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
-import {EditUserFormProps,} from './edit-user-form-props';
+import {EditUserFormProps} from './edit-user-form-props';
 
 const EditUserForm: React.FC<EditUserFormProps> = (props): JSX.Element => {
-    const [user, setUser,] = useState(props.currentUser);
+    const [user, setUser] = useState(props.currentUser);
     const handleInputChange = (
         event: ChangeEvent<{name: string; value: string}>
     ): void => {
-        const {name, value,} = event.target;
-        setUser({...user, [name]: value,});
+        const {name, value} = event.target;
+        setUser({...user, [name]: value});
     };
 
     useEffect((): void => {
         setUser(props.currentUser);
-    }, [props.currentUser,]);
+    }, [props.currentUser]);
 
     return (
         <form onSubmit={(event): void => {

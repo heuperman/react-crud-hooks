@@ -1,24 +1,24 @@
-import React, { useState, } from 'react';
+import React, { useState } from 'react';
 import UserTable from './tables/UserTable';
-import {User,} from './user';
+import {User} from './user';
 import AddUserForm from './forms/AddUserForm';
 import EditUserForm from './forms/EditUserForm';
 
 const App: React.FC = (): JSX.Element => {
     const usersData: User[] = [
-        { id: 1, name: 'Tania', username: 'floppydiskette', },
-        { id: 2, name: 'Craig', username: 'siliconeidolon', },
-        { id: 3, name: 'Ben', username: 'benisphere', },
+        { id: 1, name: 'Tania', username: 'floppydiskette' },
+        { id: 2, name: 'Craig', username: 'siliconeidolon' },
+        { id: 3, name: 'Ben', username: 'benisphere' },
     ];
 
-    const [users, setUsers,] = useState(usersData);
-    const [editing, setEditing,] = useState(false);
-    const initialFormState = {id: 0, name: '', username: '',};
-    const [currentUser, setCurrentUser,] = useState(initialFormState);
+    const [users, setUsers] = useState(usersData);
+    const [editing, setEditing] = useState(false);
+    const initialFormState = {id: 0, name: '', username: ''};
+    const [currentUser, setCurrentUser] = useState(initialFormState);
 
     const addUser = (user: User): void => {
         user.id = users.length + 1;
-        setUsers([...users, user,]);
+        setUsers([...users, user]);
     };
 
     const deleteUser = (id: number): void => {

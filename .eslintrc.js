@@ -21,7 +21,7 @@ module.exports = {
     },
     'plugins': ['@typescript-eslint', 'react'],
     'rules': {
-        'comma-dangle': ['error', 'always'],
+        'comma-dangle': ['error', 'always-multiline'],
         'indent': 'off',
         '@typescript-eslint/indent': ['error', 4],
         'max-len': ['error', {'code': 100}],

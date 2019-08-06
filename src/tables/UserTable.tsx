@@ -1,12 +1,12 @@
 import React from 'react';
-import {User,} from '../user';
+import {User} from '../user';
 import PropTypes from 'prop-types';
 
 const UserTable: React.FC<{
     users: User[];
     editRow: (user: User) => void;
     deleteUser: (id: number) => void;
-}> = ({users, editRow, deleteUser,}): JSX.Element => (
+}> = ({users, editRow, deleteUser}): JSX.Element => (
     <table>
         <thead>
             <tr>
